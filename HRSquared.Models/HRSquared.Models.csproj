@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HRSquared.Models\HRSquared.Models.csproj" />
-    <ProjectReference Include="..\HRSquared.Repository\HRSquared.Repository.csproj" />
-    <ProjectReference Include="..\HRSquared.Utility\HRSquared.Utility.csproj" />
+    <ProjectReference Include="..\HRSquared.Entities\HRSquared.Entities.csproj" />
   </ItemGroup>
 
 </Project>
