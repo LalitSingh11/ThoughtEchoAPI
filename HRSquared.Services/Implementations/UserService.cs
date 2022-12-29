@@ -1,5 +1,5 @@
 ﻿using HRSquared.Entities;
-using HRSquared.Models.UserModels;
+using HRSquared.Models.RequestModels;
 using HRSquared.Repository.Interfaces;
 using HRSquared.Services.Interfaces;
 using HRSquared.Utility;
@@ -14,14 +14,14 @@ namespace HRSquared.Services.Implementations
             _repo = repo;
         }
 
-        public async Task<User> AddUser(User user)
+        public async Task<UserCred> AddUser(UserCred user)
         {
             user.Password = PasswordHasher.HashPassword(user.Password);
             await _repo.AddUser(user);
             return await _repo.GetUserByEmail(user.Email);
         }
 
-        public async Task<User> GetUser(UserLoginModel user)
+        public async Task<UserCred> GetUser(UserLoginModel user)
         {
             var user1 = await _repo.GetUserByEmail(user.Username);
             return user1;

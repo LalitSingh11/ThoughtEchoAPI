@@ -1,5 +1,6 @@
-﻿using HRSquared.Models.UserModels;
+﻿using HRSquared.Models.RequestModels;
 using HRSquared.Services.Interfaces;
+using HRSquared.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,6 +20,7 @@ namespace HRSquared.API.Controllers
         }
         // GET: api/<UserController>
         [HttpGet]
+        [Authorize(Roles = Roles.HRorAdmin)]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };

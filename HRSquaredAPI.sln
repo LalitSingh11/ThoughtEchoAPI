@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.Utility", "HRSqua
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.DependencyResolver", "HRSquared.DependencyResolver\HRSquared.DependencyResolver.csproj", "{FE55D692-2888-47E7-933B-871155B2AE06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRSquared.Models", "HRSquared.Models\HRSquared.Models.csproj", "{1917CF4D-4006-42A9-A067-29C6095EC8D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.Models", "HRSquared.Models\HRSquared.Models.csproj", "{1917CF4D-4006-42A9-A067-29C6095EC8D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

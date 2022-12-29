@@ -4,8 +4,9 @@ namespace HRSquared.Repository.Interfaces
 {
     public interface IUserRepository
     {
-        Task<User> GetUserByEmail(string Email);
-        Task<bool> AddUser(User user);
+        Task<UserCred> GetUserByEmail(string Email);
+        Task<UserCred> GetUserById(int id);
+        Task<bool> AddUser(UserCred user);
         Task<bool> DoesUserExists(string email);
     }
 }

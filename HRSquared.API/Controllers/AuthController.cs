@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HRSquared.Services.Interfaces;
-using HRSquared.Models.UserModels;
 using HRSquared.Entities;
+using HRSquared.Models.RequestModels;
+using HRSquared.Models.ResponseModels;
+using HRSquared.API.Helpers;
 
 namespace HRSquared.API.Controllers
 {
@@ -17,13 +19,15 @@ namespace HRSquared.API.Controllers
             _userService = userService;
         }
         [HttpPost("register")]
-        public async Task<ActionResult<UserResponseModel>> Register(User user)
+        public async Task<ActionResult<UserResponseModel>> Register(UserCred user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            return await _authService.RegisterUser(user);           
+            UserResponseModel response = await _authService.RegisterUser(user);
+            SetRefreshToken(await _authService.CreateRefreshToken(response.Id));
+            return Ok(response);
         }
 
         [HttpPost("login")]
@@ -31,9 +35,32 @@ namespace HRSquared.API.Controllers
         {
             if(!await _userService.DoesUserExists(user.Username))
             {
-                return BadRequest();
+                return BadRequest("User Does Not Exist");
             }
-            return await _authService.LoginUser(user);
+            UserResponseModel response = await _authService.LoginUser(user); 
+            SetRefreshToken(await _authService.CreateRefreshToken(response.Id));
+            return Ok(response);
+            
+        }
+
+        [HttpPost("refreshtoken/{id}")]
+        public async Task<ActionResult<RefreshTokenModel>> RefreshToken(int id)
+        {
+            string refreshToken = Request.Cookies["refreshToken"];
+            var jwt = await _authService.GetJWTFromRefershToken(id, refreshToken);
+            var newRefreshToken = await _authService.CreateRefreshToken(id);
+            SetRefreshToken(newRefreshToken);            
+            return jwt != null ? Ok(jwt) : throw new AppException("Refresh Token is incorrect or Expired.");
+        }
+
+        private void SetRefreshToken(RefreshTokenModel refreshToken)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = refreshToken.Expires
+            };
+            Response.Cookies.Append("refreshToken", refreshToken.Token, cookieOptions);
         }
     }
 }

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
@@ -15,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HRSquared.Entities\HRSquared.Entities.csproj" />
+    <ProjectReference Include="..\HRSquared.Models\HRSquared.Models.csproj" />
   </ItemGroup>
 
 </Project>

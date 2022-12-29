@@ -1,5 +1,5 @@
-﻿using HRSquared.Repository.Interfaces;
-using HRSquared.Entities;
+﻿using HRSquared.Entities;
+using HRSquared.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRSquared.Repository.Implementations
@@ -11,20 +11,25 @@ namespace HRSquared.Repository.Implementations
         {
             _db = db;
         }
-        public async Task<User> GetUserByEmail(string Email)
+        public async Task<UserCred> GetUserByEmail(string Email)
         {
-            return await _db.Users.FirstOrDefaultAsync(x => x.Email == Email);
+            return await _db.UserCreds.FirstOrDefaultAsync(x => x.Email == Email);
         }
 
-        public async Task<bool> AddUser(User user)
+        public async Task<UserCred> GetUserById(int id)
         {
-             await _db.Users.AddAsync(user);
+            return await _db.UserCreds.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<bool> AddUser(UserCred user)
+        {
+             await _db.UserCreds.AddAsync(user);
              return await _db.SaveChangesAsync() > 0;
         }
 
         public async Task<bool> DoesUserExists(string email)
         {
-            return await _db.Users.AnyAsync(x => x.Email == email);
+            return await _db.UserCreds.AnyAsync(x => x.Email == email);
         }
     }
 }

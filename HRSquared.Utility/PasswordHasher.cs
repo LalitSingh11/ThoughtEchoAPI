@@ -5,14 +5,13 @@ namespace HRSquared.Utility
     {
         public static string HashPassword(string password)
         {
-           var a =  BCryptNet.HashPassword(password);
-            return a;
+            return BCryptNet.HashPassword(password);
         }
 
         public static bool VerifyHashedPassword(string providedPassword, string hashedPassword)
         {
-            var a = BCryptNet.Verify(providedPassword, hashedPassword);
-            return a;
+            return BCryptNet.Verify(providedPassword, hashedPassword);
+             
         }
     }
 }

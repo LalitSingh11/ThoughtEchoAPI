@@ -1,7 +1,11 @@
-﻿namespace HRSquared.Repository.Interfaces
+﻿using HRSquared.Entities;
+using HRSquared.Models.ResponseModels;
+
+namespace HRSquared.Repository.Interfaces
 {
     public interface IAuthRepository
     {
-        bool ValidateUser(string email, string password);
+        Task<bool> AddRefreshToken(int id, RefreshTokenModel refreshToken);
+        Task<RefreshToken> GetRefreshToken(int id);
     }
 }

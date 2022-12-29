@@ -4,9 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using HRSquared.API.Helpers;
-using HRSquared.Utility;
 using Microsoft.EntityFrameworkCore;
 using HRSquared.Entities;
+using HRSquared.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,26 +26,25 @@ builder.Services.AddSwaggerGen(swagger =>
     {
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
+        //Scheme = "Bearer",
+        //BearerFormat = "JWT",
         In = ParameterLocation.Header,
         Description = "Enter ‘Bearer’ [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
     });
     swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
                 {
-                    {
-                        new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                                }
-                            },
-                             new string[] {}
-
-                    }
-                });
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
 });
 var config = builder.Configuration.AddJsonFile("appsettings.json").Build();
 
@@ -66,12 +65,14 @@ builder.Services.AddAuthentication(opt => {
         ValidateIssuerSigningKey = true,
         ValidIssuer = jwtSettings["validIssuer"],
         ValidAudience = jwtSettings["validAudience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+        ClockSkew = TimeSpan.Zero
     };
 });
 
 builder.Services.AddDbContext<HrsquaredDbContext>(options =>
         options.UseSqlServer(config.GetSection("ConnectionString").Value),ServiceLifetime.Transient);
+builder.Services.AddAutoMapper(typeof(AutoMapping));
 RepositoryDependencyResolver repositoryDependencyResolver = new(builder.Services);
 ServicesDependencyResolver servicesDependencyResolver = new(builder.Services);
 

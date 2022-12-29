@@ -1,12 +1,12 @@
 ﻿using HRSquared.Entities;
-using HRSquared.Models.UserModels;
+using HRSquared.Models.RequestModels;
 
 namespace HRSquared.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<User> GetUser(UserLoginModel user);
-        Task<User> AddUser(User user);
+        Task<UserCred> GetUser(UserLoginModel user);
+        Task<UserCred> AddUser(UserCred user);
         Task<bool> DoesUserExists(string Email);
     }
 }
