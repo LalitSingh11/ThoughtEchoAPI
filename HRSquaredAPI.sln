@@ -4,16 +4,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.API", "HRSquared.API\HRSquared.API.csproj", "{1E488A7B-7F1A-4EA1-A5EF-4CB6B8EFC2D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9B5C6974-A8B1-4C4C-BDB4-B997B01AE83C} = {9B5C6974-A8B1-4C4C-BDB4-B997B01AE83C}
+		{FE55D692-2888-47E7-933B-871155B2AE06} = {FE55D692-2888-47E7-933B-871155B2AE06}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRSquared.Repository", "HRSquared.Repository\HRSquared.Repository.csproj", "{C450284D-1A5E-4AD3-8051-F669B547EAF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.Repository", "HRSquared.Repository\HRSquared.Repository.csproj", "{C450284D-1A5E-4AD3-8051-F669B547EAF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRSquared.Services", "HRSquared.Services\HRSquared.Services.csproj", "{9B5C6974-A8B1-4C4C-BDB4-B997B01AE83C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.Services", "HRSquared.Services\HRSquared.Services.csproj", "{9B5C6974-A8B1-4C4C-BDB4-B997B01AE83C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRSquared.Entities", "HRSquared.Entities\HRSquared.Entities.csproj", "{CD31C20A-07D8-47E2-87C4-EB5088759CD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.Entities", "HRSquared.Entities\HRSquared.Entities.csproj", "{CD31C20A-07D8-47E2-87C4-EB5088759CD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRSquared.Utility", "HRSquared.Utility\HRSquared.Utility.csproj", "{92397269-3FFF-4408-B20D-69A63ACFEE0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.Utility", "HRSquared.Utility\HRSquared.Utility.csproj", "{92397269-3FFF-4408-B20D-69A63ACFEE0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRSquared.DependencyResolver", "HRSquared.DependencyResolver\HRSquared.DependencyResolver.csproj", "{FE55D692-2888-47E7-933B-871155B2AE06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.DependencyResolver", "HRSquared.DependencyResolver\HRSquared.DependencyResolver.csproj", "{FE55D692-2888-47E7-933B-871155B2AE06}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRSquared.Models", "HRSquared.Models\HRSquared.Models.csproj", "{1917CF4D-4006-42A9-A067-29C6095EC8D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +51,10 @@ Global
 		{FE55D692-2888-47E7-933B-871155B2AE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE55D692-2888-47E7-933B-871155B2AE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE55D692-2888-47E7-933B-871155B2AE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1917CF4D-4006-42A9-A067-29C6095EC8D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1917CF4D-4006-42A9-A067-29C6095EC8D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1917CF4D-4006-42A9-A067-29C6095EC8D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1917CF4D-4006-42A9-A067-29C6095EC8D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

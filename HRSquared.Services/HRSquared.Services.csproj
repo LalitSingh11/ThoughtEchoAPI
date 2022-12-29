@@ -1,10 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+	  <OutputType>Library</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HRSquared.Models\HRSquared.Models.csproj" />
+    <ProjectReference Include="..\HRSquared.Repository\HRSquared.Repository.csproj" />
+    <ProjectReference Include="..\HRSquared.Utility\HRSquared.Utility.csproj" />
+  </ItemGroup>
 
 </Project>
