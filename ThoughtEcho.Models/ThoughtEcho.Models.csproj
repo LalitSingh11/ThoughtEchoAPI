@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <OutputType>Library</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ThoughtEcho.Entities\ThoughtEcho.Entities.csproj" />
+    <ProjectReference Include="..\ThoughtEcho.Utilities\ThoughtEcho.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
